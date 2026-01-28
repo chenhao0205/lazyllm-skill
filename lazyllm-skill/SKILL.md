@@ -1,5 +1,5 @@
 ---
-name: lazyllm
+name: lazyllm-skill
 description: >
   LazyLLM framework for building multi-agent AI applications. Use when task needs LazyLLM or develop AI
   program for:
