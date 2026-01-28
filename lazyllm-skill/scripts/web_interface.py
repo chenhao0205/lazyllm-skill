@@ -8,6 +8,7 @@ Web 界面集成示例
 """
 
 import lazyllm
+from lazyllm.tools import ReactAgent, fc_register
 
 # 示例 1: 基础 Web 界面
 print("示例 1: 基础 Web 界面")
@@ -26,14 +27,12 @@ lazyllm.WebModule(chat, port=23334, title='Tech Assistant').start().wait()
 # 示例 3: 带 Agent 的 Web 界面
 print("示例 3: 带 Agent 的 Web 界面")
 
-from lazyllm.tools import FunctionCallAgent, fc_register
-
 @fc_register('tool')
 def my_tool(param: str) -> str:
     return f"工具处理结果: {param}"
 
 llm = lazyllm.OnlineChatModule()
-agent = FunctionCallAgent(llm, tools=['my_tool'])
+agent = ReactAgent(llm, tools=['my_tool'])
 
 lazyllm.WebModule(agent, port=23335, title='Agent Web').start().wait()
 

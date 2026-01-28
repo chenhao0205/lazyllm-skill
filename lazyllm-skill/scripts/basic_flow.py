@@ -5,7 +5,7 @@
 运行: python basic_flow.py
 """
 
-from lazyllm import pipeline, parallel, bind, _0
+from lazyllm import pipeline, parallel, bind
 
 # 示例 1: 基础 Pipeline
 print("=" * 50)
@@ -24,7 +24,7 @@ def f3(input):
 # 创建 pipeline
 p = pipeline(f1, f2, f3)
 result = p(1)
-print(f"输入: 1")
+print("输入: 1")
 print(f"结果: {result}  ( ((1+1)*2)^2 )")
 print()
 
@@ -39,7 +39,7 @@ with pipeline() as p:
     p.step3 = f3
 
 result = p(2)
-print(f"输入: 2")
+print("输入: 2")
 print(f"结果: {result}")
 print()
 
@@ -59,7 +59,7 @@ with parallel() as p:
     p.task_b = task2
 
 result = p(1)
-print(f"输入: 1")
+print("输入: 1")
 print(f"结果: {result}  ( (1*2, 1+3) )")
 print()
 
@@ -73,7 +73,7 @@ with parallel().sum as p:
     p.task_b = task2
 
 result = p(1)
-print(f"输入: 1")
+print("输入: 1")
 print(f"结果: {result}  ( (1*2) + (1+3) )")
 print()
 
@@ -87,7 +87,7 @@ with parallel().asdict as p:
     p.task_b = task2
 
 result = p(1)
-print(f"输入: 1")
+print("输入: 1")
 print(f"结果: {result}")
 print()
 
@@ -107,7 +107,7 @@ with pipeline() as p:
     p.step2 = multiply
 
 result = p(5)
-print(f"输入: 5")
+print("输入: 5")
 print(f"结果: {result}  ( (5+5)*3 )")
 print()
 
@@ -138,6 +138,6 @@ with pipeline() as ppl:
     ppl.combine = combine
 
 result = ppl("  Hello World  ")
-print(f"输入: '  Hello World  '")
+print("输入: '  Hello World  '")
 print(f"结果: {result}")
 print()
